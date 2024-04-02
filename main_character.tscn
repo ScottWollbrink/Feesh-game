@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://duackkmh2a6xf"]
+[gd_scene load_steps=14 format=3 uid="uid://707nifbcq1se"]
 
 [ext_resource type="Script" path="res://MainCharacter.gd" id="1_8xmhu"]
 [ext_resource type="Texture2D" uid="uid://dlvfmnbgjoe8s" path="res://Red.png" id="2_2j8fu"]
+[ext_resource type="Script" path="res://HurtBox.gd" id="3_qkyub"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8a3dv"]
 atlas = ExtResource("2_2j8fu")
@@ -67,8 +68,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8c53g"]
-radius = 15.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_muff6"]
+radius = 8.4
+height = 28.5714
 
 [node name="MainCharacter" type="CharacterBody2D"]
 script = ExtResource("1_8xmhu")
@@ -81,6 +83,11 @@ animation = &"move"
 frame = 3
 frame_progress = 0.478638
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(19, -6)
-shape = SubResource("CircleShape2D_8c53g")
+[node name="HurtBox" type="Area2D" parent="MainCharacterAnimation"]
+script = ExtResource("3_qkyub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainCharacterAnimation/HurtBox"]
+position = Vector2(3.30159, 0.533333)
+rotation = 1.5708
+scale = Vector2(0.507937, 0.533333)
+shape = SubResource("CapsuleShape2D_muff6")
