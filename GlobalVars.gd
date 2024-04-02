@@ -1,6 +1,8 @@
 extends Node
 
 var playerVelocity = 250
+var playerHealth = 200
+var turtleVelocity = 150
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var _animationPlayer = $MainCharacterAnimation
 @onready var _playerVelocity = GlobalVars.playerVelocity
+@onready var _playerHealth = GlobalVars.playerHealth
 
 var isLeft = false
 var isRight = false
