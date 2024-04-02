@@ -203,8 +203,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iap2d"]
-size = Vector2(43, 10.5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omwdo"]
+radius = 5.7457
+height = 44.0
 
 [node name="Turtle" type="CharacterBody2D"]
 script = ExtResource("1_ln0xg")
@@ -216,5 +217,6 @@ sprite_frames = SubResource("SpriteFrames_cj3t3")
 animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(21.5, -15.25)
-shape = SubResource("RectangleShape2D_iap2d")
+position = Vector2(22, -15)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_omwdo")

@@ -10,7 +10,8 @@ offset_right = 1176.0
 offset_bottom = 670.0
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_4r054")]
+unique_name_in_owner = true
 position = Vector2(239, 467)
 
 [node name="Turtle" parent="." instance=ExtResource("2_bx4je")]
-position = Vector2(561, 492)
+position = Vector2(510, 497)
