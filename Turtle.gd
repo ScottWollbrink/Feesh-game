@@ -14,5 +14,9 @@ func _physics_process(delta):
 		_animationPlayer.flip_h = false
 	elif isLeft:
 		_animationPlayer.flip_h = true
-	
+	velocity = direction * 150
+	if velocity != Vector2.ZERO:
+		_animationPlayer.play("walking")
+	else:
+		_animationPlayer.play("idle")
 	move_and_slide()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://707nifbcq1se"]
+[gd_scene load_steps=15 format=3 uid="uid://707nifbcq1se"]
 
 [ext_resource type="Script" path="res://MainCharacter.gd" id="1_dqhp8"]
 [ext_resource type="Texture2D" uid="uid://dlvfmnbgjoe8s" path="res://Red.png" id="2_2j8fu"]
@@ -72,7 +72,12 @@ animations = [{
 radius = 8.4
 height = 28.5714
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6fv7n"]
+height = 32.0
+
 [node name="MainCharacter" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_dqhp8")
 
 [node name="MainCharacterAnimation" type="AnimatedSprite2D" parent="."]
@@ -91,3 +96,9 @@ position = Vector2(3.30159, 0.533333)
 rotation = 1.5708
 scale = Vector2(0.507937, 0.533333)
 shape = SubResource("CapsuleShape2D_muff6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(22, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6fv7n")
+debug_color = Color(0.756863, 0.45098, 0.0862745, 0.419608)
