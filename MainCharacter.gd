@@ -8,6 +8,7 @@ func _physics_process(delta):
 	var isLeft = velocity.x < 0
 	var isRight = velocity.x > 0
 	move_and_slide()
+	
 	if Input.is_action_pressed("move_right"):
 		_animation_player.play("move")
 		_animation_player.flip_h = !isRight

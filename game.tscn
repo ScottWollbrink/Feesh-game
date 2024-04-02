@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3v1gd3x11yss"]
+
+[ext_resource type="PackedScene" uid="uid://duackkmh2a6xf" path="res://main_character.tscn" id="1_4r054"]
+[ext_resource type="PackedScene" uid="uid://mpgmylwv0luc" path="res://turtle.tscn" id="2_bx4je"]
+
+[node name="Game" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1176.0
+offset_bottom = 670.0
+
+[node name="MainCharacter" parent="." instance=ExtResource("1_4r054")]
+position = Vector2(239, 467)
+
+[node name="Turtle" parent="." instance=ExtResource("2_bx4je")]
+position = Vector2(561, 492)
