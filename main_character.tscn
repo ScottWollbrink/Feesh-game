@@ -75,7 +75,7 @@ height = 32.0
 script = ExtResource("1_dqhp8")
 
 [node name="MainCharacterAnimation" type="AnimatedSprite2D" parent="."]
-position = Vector2(15, -3)
+position = Vector2(37, 19)
 scale = Vector2(1.96875, 1.875)
 sprite_frames = SubResource("SpriteFrames_gsr2u")
 animation = &"move"
