@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://duackkmh2a6xf"]
 
-[ext_resource type="Script" path="res://MainCharacter.gd" id="1_8xmhu"]
+[ext_resource type="Script" path="res://MainCharacter.gd" id="1_dqhp8"]
 [ext_resource type="Texture2D" uid="uid://dlvfmnbgjoe8s" path="res://Red.png" id="2_2j8fu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8a3dv"]
@@ -72,10 +72,10 @@ radius = 8.0
 height = 32.0
 
 [node name="MainCharacter" type="CharacterBody2D"]
-script = ExtResource("1_8xmhu")
+script = ExtResource("1_dqhp8")
 
 [node name="MainCharacterAnimation" type="AnimatedSprite2D" parent="."]
-position = Vector2(35, 19)
+position = Vector2(15, -3)
 scale = Vector2(1.96875, 1.875)
 sprite_frames = SubResource("SpriteFrames_gsr2u")
 animation = &"move"
