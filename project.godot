@@ -14,6 +14,10 @@ config/name="Feesh"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalVars="*res://GlobalVars.gd"
+
 [input]
 
 move_left={
