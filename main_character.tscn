@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://707nifbcq1se"]
 
-[ext_resource type="Script" path="res://MainCharacter.gd" id="1_8xmhu"]
+[ext_resource type="Script" path="res://MainCharacter.gd" id="1_dqhp8"]
 [ext_resource type="Texture2D" uid="uid://dlvfmnbgjoe8s" path="res://Red.png" id="2_2j8fu"]
 [ext_resource type="Script" path="res://HurtBox.gd" id="3_qkyub"]
 
@@ -73,10 +73,10 @@ radius = 8.4
 height = 28.5714
 
 [node name="MainCharacter" type="CharacterBody2D"]
-script = ExtResource("1_8xmhu")
+script = ExtResource("1_dqhp8")
 
 [node name="MainCharacterAnimation" type="AnimatedSprite2D" parent="."]
-position = Vector2(15.5, -7)
+position = Vector2(15, -3)
 scale = Vector2(1.96875, 1.875)
 sprite_frames = SubResource("SpriteFrames_gsr2u")
 animation = &"move"
