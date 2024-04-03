@@ -11,6 +11,7 @@ extends CharacterBody2D
 func _process(delta):
 	if (_turtleHealth <= 0):
 		visible = false # stub
+		queue_free()
 		print("turtle has died")
 
 func take_damage(dmgValue: float, armorPen: float):

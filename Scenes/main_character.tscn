@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://707nifbcq1se"]
+[gd_scene load_steps=18 format=3 uid="uid://707nifbcq1se"]
 
 [ext_resource type="Script" path="res://Scripts/Player/MainCharacter.gd" id="1_r8p80"]
 [ext_resource type="Texture2D" uid="uid://dlvfmnbgjoe8s" path="res://PlayerSprites/Red.png" id="2_sh4ye"]
@@ -76,6 +76,20 @@ height = 32.0
 radius = 8.39999
 height = 28.5714
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5w3t6"]
+bg_color = Color(0.152941, 0.168627, 0.188235, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qf16s"]
+bg_color = Color(0.388235, 0.8, 0.372549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="MainCharacter" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 2
@@ -95,6 +109,8 @@ visibility_layer = 17
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_6fv7n")
 debug_color = Color(0.756863, 0.45098, 0.0862745, 0.419608)
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="PlayerHurtBox" type="Area2D" parent="."]
 scale = Vector2(1.96875, 1.875)
@@ -121,6 +137,16 @@ one_shot = true
 [node name="CosmeticTimer" type="Timer" parent="BiteAttack"]
 wait_time = 0.5
 one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -74.0
+offset_top = -38.0
+offset_right = 75.0
+offset_bottom = -15.0
+theme_override_styles/background = SubResource("StyleBoxFlat_5w3t6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qf16s")
+max_value = 200.0
 
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="BiteAttack/CooldownTimer" to="." method="_on_cooldown_timeout"]

@@ -16,6 +16,8 @@ var isReady: bool = true
 
 func _ready():
 	_animationPlayer.play("move")
+	%ProgressBar.set_max(_playerHealth)
+	%ProgressBar.value = _playerHealth
 
 func _process(delta):
 	if (_playerHealth <= 0):
@@ -31,6 +33,7 @@ func _process(delta):
 func take_damage(dmgValue: float, armorPen: float):
 	dmgValue *= 1 - (_playerDefense * (1 - armorPen))
 	_playerHealth -= dmgValue
+	%ProgressBar.value = _playerHealth
 	print("Player Health: ", _playerHealth)
 
 func _physics_process(delta):
