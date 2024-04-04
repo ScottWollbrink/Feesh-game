@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://canxsrev0p8s"]
+[gd_scene load_steps=15 format=3 uid="uid://canxsrev0p8s"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/Jelly.gd" id="1_i0x7n"]
 [ext_resource type="Texture2D" uid="uid://cxxrt3lsf5gag" path="res://EnemySprites/1/Walk.png" id="2_1pb5n"]
 [ext_resource type="Texture2D" uid="uid://cm5tsat3c407g" path="res://EnemySprites/1/Hurt.png" id="3_2j46g"]
+[ext_resource type="PackedScene" uid="uid://crglj4k7iooai" path="res://soft_collision.tscn" id="4_rknvp"]
 [ext_resource type="Script" path="res://Scenes/JellyHitBox.gd" id="4_ws4rs"]
 
 [sub_resource type="Animation" id="Animation_2afxd"]
@@ -168,9 +169,8 @@ _data = {
 "swimming": SubResource("Animation_qqewg")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_km35g"]
-radius = 2.0
-height = 4.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_tjoak"]
+radius = 7.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xt88c"]
 radius = 11.8125
@@ -211,9 +211,10 @@ libraries = {
 autoplay = "swimming"
 speed_scale = 0.494
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_km35g")
+[node name="SoftCollision" parent="." instance=ExtResource("4_rknvp")]
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+shape = SubResource("CircleShape2D_tjoak")
 
 [node name="JellyHurtBox" type="Area2D" parent="."]
 collision_layer = 4
@@ -271,3 +272,5 @@ one_shot = true
 [connection signal="area_entered" from="JellyHurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="JellyHitBox/HitBoxTimer" to="JellyHitBox" method="_on_hit_box_timer_timeout"]
 [connection signal="timeout" from="HealthBar/HideHealthBarTimer" to="." method="_on_hide_health_bar_timer_timeout"]
+
+[editable path="SoftCollision"]

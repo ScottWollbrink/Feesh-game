@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var _healthBar = $HealthBar
 @onready var _hideHealthBarTimer = $HealthBar/HideHealthBarTimer
 @onready var _jellyXp = GlobalVars.jellyXp
+@onready var _softCollisions = $SoftCollision
 
 var maxHealth: float
 
@@ -47,6 +48,9 @@ func _physics_process(delta):
 		$Jellyfish.flip_h = false
 	elif isLeft:
 		$Jellyfish.flip_h = true
+		
+	if _softCollisions.is_colliding():
+		velocity += _softCollisions.get_push_vector() * delta * 400
 	move_and_slide()
 
 func _on_hurt_box_area_entered(area):
