@@ -18,7 +18,6 @@ func _ready():
 	_healthBar.visible = false
 	_animationPlayer.play("swimming")
 	maxHealth = _turtleHealth
-	print(maxHealth)
 
 func _process(delta):
 	if (_turtleHealth <= 0):
