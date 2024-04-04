@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://mpgmylwv0luc"]
+[gd_scene load_steps=38 format=3 uid="uid://mpgmylwv0luc"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/Turtle.gd" id="1_oqkum"]
 [ext_resource type="Texture2D" uid="uid://5s1u2ikbkst7" path="res://EnemySprites/2/Attack.png" id="2_b3gf5"]
@@ -216,6 +216,20 @@ height = 90.0001
 radius = 12.0
 height = 92.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1sfbh"]
+bg_color = Color(0.152941, 0.168627, 0.188235, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xjp7"]
+bg_color = Color(0.8, 0.388235, 0.372549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="Turtle" type="CharacterBody2D"]
 script = ExtResource("1_oqkum")
 
@@ -258,5 +272,28 @@ shape = SubResource("CapsuleShape2D_s61vf")
 wait_time = 0.5
 one_shot = true
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+theme_override_styles/background = SubResource("StyleBoxFlat_1sfbh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0xjp7")
+max_value = 200.0
+show_percentage = false
+
+[node name="HideHealthBarTimer" type="Timer" parent="HealthBar"]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="area_entered" from="TurtleHurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="TurtleHitBox/HitBoxTimer" to="TurtleHitBox" method="_on_hit_box_timer_timeout"]
+[connection signal="timeout" from="HealthBar/HideHealthBarTimer" to="." method="_on_hide_health_bar_timer_timeout"]

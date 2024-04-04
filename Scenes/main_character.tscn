@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://707nifbcq1se"]
+[gd_scene load_steps=19 format=3 uid="uid://707nifbcq1se"]
 
 [ext_resource type="Script" path="res://Scripts/Player/MainCharacter.gd" id="1_r8p80"]
 [ext_resource type="Texture2D" uid="uid://dlvfmnbgjoe8s" path="res://PlayerSprites/Red.png" id="2_sh4ye"]
@@ -84,11 +84,14 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qf16s"]
-bg_color = Color(0.388235, 0.8, 0.372549, 1)
+bg_color = Color(0.388235, 0.8, 0.368627, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccffv"]
+bg_color = Color(0.603922, 0.603922, 0.8, 1)
 
 [node name="MainCharacter" type="CharacterBody2D"]
 collision_layer = 0
@@ -138,16 +141,47 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-unique_name_in_owner = true
-offset_left = -74.0
-offset_top = -38.0
-offset_right = 75.0
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
 offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
 theme_override_styles/background = SubResource("StyleBoxFlat_5w3t6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qf16s")
 max_value = 200.0
+show_percentage = false
+
+[node name="XpBar" type="ProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = 12.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+theme_override_styles/background = SubResource("StyleBoxFlat_5w3t6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ccffv")
+max_value = 200.0
+show_percentage = false
+
+[node name="HideXpBarTimer" type="Timer" parent="XpBar"]
+wait_time = 3.0
+one_shot = true
 
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="BiteAttack/CooldownTimer" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="BiteAttack/CosmeticTimer" to="." method="_on_cosmetic_timer_timeout"]
+[connection signal="timeout" from="XpBar/HideXpBarTimer" to="." method="_on_hide_xp_bar_timer_timeout"]
