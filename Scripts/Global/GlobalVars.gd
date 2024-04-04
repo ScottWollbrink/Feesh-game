@@ -1,5 +1,7 @@
 extends Node
 
+var goofySoundChance = 15
+
 var playerVelocity = 250
 var playerHealth = 200
 var playerDefense = 0
