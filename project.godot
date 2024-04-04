@@ -23,7 +23,7 @@ project/assembly_name="Feesh"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gaea/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var player = get_node("/root/Game/MainCharacter")
 @onready var _turtleVelocity = GlobalVars.turtleVelocity
 @onready var _turtleLerp = GlobalVars.turtleLerp
-@onready var _animationPlayer = $TurtleAnimation
+@onready var _animationPlayer = $AnimationPlayer
 @onready var _turtleDefense = GlobalVars.turtleDefense
 @onready var _turtleHealth = GlobalVars.turtleHealth
 @onready var _healthBar = $HealthBar
@@ -16,6 +16,7 @@ func _ready():
 	_healthBar.set_max(_turtleHealth)
 	_healthBar.value = _turtleHealth
 	_healthBar.visible = false
+	_animationPlayer.play("swimming")
 	maxHealth = _turtleHealth
 	print(maxHealth)
 
@@ -24,12 +25,16 @@ func _process(delta):
 		visible = false # stub
 		player.get_xp(_turtleXp)
 		queue_free()
+		
 	if (_healthBar.visible == true and _healthBar.value >= maxHealth):
 		_hideHealthBarTimer.start()
 
 func take_damage(dmgValue: float, armorPen: float):
 	dmgValue *= 1 - (_turtleDefense * (1 - armorPen))
 	_turtleHealth -= dmgValue
+	_animationPlayer.stop()
+	_animationPlayer.play("hurt")
+	_animationPlayer.queue("swimming")
 	_healthBar.value = _turtleHealth
 	_healthBar.visible = true
 
@@ -40,13 +45,9 @@ func _physics_process(delta):
 	var isRight = velocity.x > 0
 	
 	if isRight:
-		_animationPlayer.flip_h = false
+		$Turtle.flip_h = false
 	elif isLeft:
-		_animationPlayer.flip_h = true
-	if velocity != Vector2.ZERO:
-		_animationPlayer.play("walking")
-	else:
-		_animationPlayer.play("idle")
+		$Turtle.flip_h = true
 	move_and_slide()
 
 func _on_hurt_box_area_entered(area):
@@ -59,3 +60,6 @@ func _on_hurt_box_area_entered(area):
 func _on_hide_health_bar_timer_timeout():
 	_healthBar.visible = false
 	_hideHealthBarTimer.stop()
+
+
+		
