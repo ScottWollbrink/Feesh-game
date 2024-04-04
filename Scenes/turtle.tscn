@@ -205,8 +205,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omwdo"]
-radius = 5.7457
-height = 46.0
+radius = 3.0
+height = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ia43v"]
 radius = 11.8125
@@ -242,6 +242,7 @@ animation = &"attack"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_omwdo")
+disabled = true
 
 [node name="TurtleHurtBox" type="Area2D" parent="."]
 collision_layer = 4

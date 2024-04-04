@@ -17,7 +17,6 @@ func _ready():
 	_healthBar.value = _turtleHealth
 	_healthBar.visible = false
 	maxHealth = _turtleHealth
-	print(maxHealth)
 
 func _process(delta):
 	if (_turtleHealth <= 0):
