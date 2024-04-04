@@ -62,10 +62,14 @@ func _process(delta):
 			swap_music_track(_musicPlayer, _musicPlayerMenu)
 			isInMenu = true
 		
-func take_damage(dmgValue: float, armorPen: float):
+func take_damage(dmgValue: float, armorPen: float, hasSlow):
 	dmgValue *= 1 - (_playerDefense * (1 - armorPen))
 	_playerHealth -= dmgValue
 	_healthBar.value = _playerHealth
+	if hasSlow:
+		_playerVelocity = 150
+		$SlowTimer.start()
+		$MainCharacterAnimation.speed_scale = 0.5
 	
 func get_xp(xpValue: float):
 	if (_playerXp + xpValue > _playerXpToLevel):
@@ -140,7 +144,7 @@ func _on_hurt_box_area_entered(area):
 	area.readyToDmg = false
 	area.get_node("HitBoxTimer").start()
 	area.play_damage_sound()
-	take_damage(area.damage, area.armorPen)
+	take_damage(area.damage, area.armorPen, area.hasSlow)
 
 
 func _on_cooldown_timeout():
@@ -154,3 +158,8 @@ func _on_cosmetic_timer_timeout():
 func _on_hide_xp_bar_timer_timeout():
 	_hideXpBarTimer.stop()
 	_xpBar.visible = false
+
+
+func _on_slow_timer_timeout():
+	_playerVelocity = GlobalVars.playerVelocity
+	$MainCharacterAnimation.speed_scale = 1

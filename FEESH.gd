@@ -1,11 +1,16 @@
 extends Node2D
 
+var enemyList = [
+	preload("res://Scenes/turtle.tscn"),
+	preload("res://Scenes/jelly.tscn")
+]
 
 func spawnMob():
-	var newTurtle = preload("res://Scenes/turtle.tscn").instantiate()
+	var randomEnemy = randi_range(0, 1)
+	var spawnedMob = enemyList[randomEnemy].instantiate()
 	%PathFollow2D.progress_ratio = randf()
-	newTurtle.global_position = %PathFollow2D.global_position
-	add_child(newTurtle)
-
+	spawnedMob.global_position = %PathFollow2D.global_position
+	add_child(spawnedMob)
+	
 func _on_timer_timeout():
 	spawnMob()

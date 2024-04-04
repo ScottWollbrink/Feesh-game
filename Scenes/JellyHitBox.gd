@@ -1,8 +1,8 @@
 extends Area2D
 
-@export var damage = GlobalVars.turtleDamage
+@export var damage = GlobalVars.jellyDamage
 @export var armorPen = 0
-@export var hasSlow = false
+@export var hasSlow = true
 @export var readyToDmg = true
 
 @onready var _damageSound = get_node("/root/Game/AudioManager/TurtleSFX")

@@ -19,6 +19,13 @@ var turtleLerp = 3
 var turtleDamage = 10
 var turtleXp = 10
 
+var jellyVelocity = 50
+var jellyHealth = 50
+var jellyDefense = 0.0
+var jellyLerp = 1
+var jellyDamage = 1
+var jellyXp = 5
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
