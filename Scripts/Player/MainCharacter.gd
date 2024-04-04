@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var _playerLevel = GlobalVars.playerLevel
 @onready var _playerXpToLevel = GlobalVars.playerXpToLevel
 @onready var _hideXpBarTimer = $XpBar/HideXpBarTimer
+@onready var _musicPlayer = get_node("/root/Game/AudioManager/MusicPlayer")
 
 var isLeft = false
 var isRight = false
@@ -27,6 +28,7 @@ func _ready():
 	_xpBar.set_max(_playerXpToLevel)
 	_xpBar.value = _playerXp
 	_xpBar.visible = false
+	_musicPlayer.play()
 
 func _process(delta):
 	if (_playerHealth <= 0):
@@ -92,6 +94,7 @@ func move_character():
 		_xpBar.position.x -= 30
 	
 	velocity = direction * _playerVelocity
+	_musicPlayer.position = self.position
 		
 	move_and_slide()
 

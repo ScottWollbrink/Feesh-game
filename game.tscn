@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3v1gd3x11yss"]
+[gd_scene load_steps=6 format=3 uid="uid://d3v1gd3x11yss"]
 
 [ext_resource type="PackedScene" uid="uid://707nifbcq1se" path="res://Scenes/main_character.tscn" id="1_4r054"]
 [ext_resource type="Script" path="res://FEESH.gd" id="1_7nc4i"]
 [ext_resource type="Texture2D" uid="uid://54eow8uh1lqb" path="res://BackgroundAssets/Underwater Pack/Afternoon/Underwater_Afternoon_10.jpg" id="1_tvujx"]
+[ext_resource type="AudioStream" uid="uid://bs1ivmg1cvgas" path="res://Audio/BGMusic.wav" id="4_8mywm"]
 
 [sub_resource type="Curve2D" id="Curve2D_vlemf"]
 _data = {
@@ -32,5 +33,12 @@ rotation = 0.00167224
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="AudioManager" type="Node" parent="."]
+
+[node name="BiteSFX" type="AudioStreamPlayer2D" parent="AudioManager"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]
+stream = ExtResource("4_8mywm")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
