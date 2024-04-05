@@ -26,6 +26,10 @@ extends CharacterBody2D
 @onready var _chompSoundGoofy = get_node("/root/Game/AudioManager/BiteSFXGoofy")
 @onready var _deathSound = get_node("/root/Game/AudioManager/DeathSFX")
 @onready var _deathSoundGoofy = get_node("/root/Game/AudioManager/DeathSFXGoofy")
+@onready var _mcDashSound = get_node("/root/Game/AudioManager/MainCharacterDashSFX")
+@onready var _mcDashSoundGoofy = get_node("/root/Game/AudioManager/MainCharacterDashSFXGoofy")
+@onready var _mcSlapSoundGoofy = get_node("/root/Game/AudioManager/MainCharacterSlapSFXGoofy")
+@onready var _mcSlapSound = get_node("/root/Game/AudioManager/MainCharacterSlapSFX")
 
 var isLeft = false
 var isRight = false
@@ -64,7 +68,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("tailwhip") and tailIsReady:
 		tailIsReady = false
 		_tailWhip.activate()
-		play_goofy_sound(_chompSound, _chompSoundGoofy)
+		play_goofy_sound(_mcSlapSound, _mcSlapSoundGoofy)
 		_tailWhipCooldownTimer.start()
 		_tailWhipCosmeticTimer.start()
 		
@@ -102,7 +106,6 @@ func get_xp(xpValue: float):
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("dash"):
-			print("dash button pressed")
 			dash()
 	move_character()
 
@@ -162,7 +165,7 @@ func _on_hurt_box_area_entered(area):
 	
 	area.readyToDmg = false
 	area.get_node("HitBoxTimer").start()
-	area.play_damage_sound()
+	area.play_damage_sound(self.position)
 	take_damage(area.damage, area.armorPen, area.hasSlow)
 
 
@@ -191,6 +194,7 @@ func _on_slow_timer_timeout():
 func dash():
 	if dashIsReady:
 		print("dashing")
+		play_goofy_sound(_mcDashSound, _mcDashSoundGoofy)
 		_playerVelocity = 1000
 		_dashDurationTimer.start()
 		_dashCoolDownTimer.start()

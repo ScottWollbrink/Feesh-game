@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d3v1gd3x11yss"]
+[gd_scene load_steps=25 format=3 uid="uid://d3v1gd3x11yss"]
 
 [ext_resource type="PackedScene" uid="uid://707nifbcq1se" path="res://Scenes/main_character.tscn" id="1_4r054"]
 [ext_resource type="Script" path="res://FEESH.gd" id="1_7nc4i"]
@@ -12,6 +12,13 @@
 [ext_resource type="AudioStream" uid="uid://seb0yunvegsx" path="res://Audio/BGMusicDeath.wav" id="7_i0ojp"]
 [ext_resource type="AudioStream" uid="uid://c8k6ba112klua" path="res://Audio/BGMusicMenu.wav" id="10_o1hdg"]
 [ext_resource type="Texture2D" uid="uid://bwthhwe2xakj3" path="res://BackgroundAssets/boarder.png" id="12_x6ak8"]
+[ext_resource type="AudioStream" uid="uid://cvepxah1kkkyc" path="res://Audio/StingSound.wav" id="13_21huk"]
+[ext_resource type="AudioStream" uid="uid://b2aee6fv6mp03" path="res://Audio/StingWord.wav" id="14_5m6c8"]
+[ext_resource type="AudioStream" uid="uid://pmy82sfm3j87" path="res://Audio/SlapSound.wav" id="15_qwoeq"]
+[ext_resource type="AudioStream" uid="uid://txpdlfmnyxd6" path="res://Audio/MainCharacterSlapSound.wav" id="16_tqhvr"]
+[ext_resource type="AudioStream" uid="uid://dforh04glw2dn" path="res://Audio/MainCharacterSlapWord.wav" id="17_vcwbr"]
+[ext_resource type="AudioStream" uid="uid://b1v74objm4nbq" path="res://Audio/MainCharacterDashSound.wav" id="18_3ptrx"]
+[ext_resource type="AudioStream" uid="uid://djpcsq55t8tfu" path="res://Audio/MainCharacterDashWord.wav" id="19_vawys"]
 
 [sub_resource type="Curve2D" id="Curve2D_vlemf"]
 _data = {
@@ -120,6 +127,34 @@ stream = ExtResource("10_o1hdg")
 [node name="MusicPlayerDeath" type="AudioStreamPlayer2D" parent="AudioManager"]
 position = Vector2(0, -1)
 stream = ExtResource("7_i0ojp")
+
+[node name="StingSFX" type="AudioStreamPlayer2D" parent="AudioManager"]
+position = Vector2(0, -2)
+stream = ExtResource("13_21huk")
+
+[node name="StingSFXGoofy" type="AudioStreamPlayer2D" parent="AudioManager"]
+position = Vector2(0, -2)
+stream = ExtResource("14_5m6c8")
+
+[node name="SlapSFX" type="AudioStreamPlayer2D" parent="AudioManager"]
+position = Vector2(0, -2)
+stream = ExtResource("15_qwoeq")
+
+[node name="MainCharacterSlapSFX" type="AudioStreamPlayer2D" parent="AudioManager"]
+position = Vector2(0, -2)
+stream = ExtResource("16_tqhvr")
+
+[node name="MainCharacterSlapSFXGoofy" type="AudioStreamPlayer2D" parent="AudioManager"]
+position = Vector2(0, -2)
+stream = ExtResource("17_vcwbr")
+
+[node name="MainCharacterDashSFX" type="AudioStreamPlayer2D" parent="AudioManager"]
+position = Vector2(0, -2)
+stream = ExtResource("18_3ptrx")
+
+[node name="MainCharacterDashSFXGoofy" type="AudioStreamPlayer2D" parent="AudioManager"]
+position = Vector2(0, -2)
+stream = ExtResource("19_vawys")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 light_mask = 2
