@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d3v1gd3x11yss"]
+[gd_scene load_steps=18 format=3 uid="uid://d3v1gd3x11yss"]
 
 [ext_resource type="PackedScene" uid="uid://707nifbcq1se" path="res://Scenes/main_character.tscn" id="1_4r054"]
 [ext_resource type="Script" path="res://FEESH.gd" id="1_7nc4i"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bijqq8cllai7e" path="res://Audio/ImDead.wav" id="6_k7bcn"]
 [ext_resource type="AudioStream" uid="uid://seb0yunvegsx" path="res://Audio/BGMusicDeath.wav" id="7_i0ojp"]
 [ext_resource type="AudioStream" uid="uid://c8k6ba112klua" path="res://Audio/BGMusicMenu.wav" id="10_o1hdg"]
+[ext_resource type="Texture2D" uid="uid://bwthhwe2xakj3" path="res://BackgroundAssets/boarder.png" id="12_x6ak8"]
 
 [sub_resource type="Curve2D" id="Curve2D_vlemf"]
 _data = {
@@ -51,8 +52,46 @@ unique_name_in_owner = true
 position = Vector2(-594, -365)
 rotation = 0.00167224
 
+[node name="Boarder" type="Sprite2D" parent="."]
+top_level = true
+light_mask = 1023
+visibility_layer = 1023
+position = Vector2(1939.5, 1027.5)
+scale = Vector2(1.49115, 1.43426)
+texture = ExtResource("12_x6ak8")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+top_level = true
+offset_left = 145.0
+offset_top = -8.0
+offset_right = 3375.0
+offset_bottom = 279.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+top_level = true
+offset_right = 544.0
+offset_bottom = 2069.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+top_level = true
+offset_left = 3369.0
+offset_top = -1.0
+offset_right = 3875.0
+offset_bottom = 1817.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+top_level = true
+offset_left = 533.0
+offset_top = 1785.0
+offset_right = 3875.0
+offset_bottom = 2067.0
+color = Color(0, 0, 0, 1)
+
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 4.0
 autostart = true
 
 [node name="AudioManager" type="Node" parent="."]

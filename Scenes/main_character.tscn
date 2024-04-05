@@ -120,6 +120,14 @@ debug_color = Color(0.756863, 0.45098, 0.0862745, 0.419608)
 [node name="SlowTimer" type="Timer" parent="."]
 wait_time = 3.0
 
+[node name="dashDuration" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="dashCooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="PlayerHurtBox" type="Area2D" parent="."]
 scale = Vector2(1.96875, 1.875)
 collision_layer = 2
@@ -198,6 +206,8 @@ wait_time = 3.0
 one_shot = true
 
 [connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]
+[connection signal="timeout" from="dashDuration" to="." method="_on_dash_duration_timeout"]
+[connection signal="timeout" from="dashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="BiteAttack/CooldownTimer" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="BiteAttack/CosmeticTimer" to="." method="_on_cosmetic_timer_timeout"]

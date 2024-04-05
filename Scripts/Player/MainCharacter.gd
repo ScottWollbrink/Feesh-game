@@ -10,6 +10,8 @@ extends CharacterBody2D
 @onready var _tailWhip = $TailWhipAttack
 @onready var _tailWhipCooldownTimer = $TailWhipAttack/TailCooldowTimer
 @onready var _tailWhipCosmeticTimer = $TailWhipAttack/TailCosmeticTimer
+@onready var _dashDurationTimer = $dashDuration
+@onready var _dashCoolDownTimer = $dashCooldownTimer
 @onready var _healthBar = $HealthBar
 @onready var _xpBar = $XpBar
 @onready var _playerXp = GlobalVars.playerXp
@@ -28,7 +30,10 @@ extends CharacterBody2D
 var isLeft = false
 var isRight = false
 var facingLeft = false
-var isReady: bool = true
+var biteIsReady: bool = true
+var tailIsReady: bool = true
+var dashIsReady: bool = true
+var dashSpeed = 1250
 var isDead: bool = false
 var isInMenu: bool = false
 
@@ -49,19 +54,21 @@ func _process(delta):
 			play_goofy_sound(_deathSound, _deathSoundGoofy)
 		isDead = true
 		
-	if Input.is_action_just_pressed("bite") and isReady:
-		isReady = false
+	if Input.is_action_just_pressed("bite") and biteIsReady:
+		biteIsReady = false
 		_bite.activate()
 		play_goofy_sound(_chompSound, _chompSoundGoofy)
 		_cooldownTimer.start()
 		_cosmeticTimer.start()
 		
-	if Input.is_action_just_pressed("tailwhip") and isReady:
-		isReady = false
+	if Input.is_action_just_pressed("tailwhip") and tailIsReady:
+		tailIsReady = false
 		_tailWhip.activate()
 		play_goofy_sound(_chompSound, _chompSoundGoofy)
 		_tailWhipCooldownTimer.start()
 		_tailWhipCosmeticTimer.start()
+		
+		
 		
 	if (Input.is_action_just_pressed("changesong") and !isDead):
 		if (isInMenu):
@@ -94,6 +101,9 @@ func get_xp(xpValue: float):
 	_hideXpBarTimer.start()
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("dash"):
+			print("dash button pressed")
+			dash()
 	move_character()
 
 func move_character():
@@ -130,7 +140,7 @@ func move_character():
 	
 	velocity = direction * _playerVelocity
 	_musicPlayer.position = self.position
-		
+
 	move_and_slide()
 	
 func play_goofy_sound(sound, goofySound):
@@ -157,14 +167,14 @@ func _on_hurt_box_area_entered(area):
 
 
 func _on_cooldown_timeout():
-	isReady = true
+	biteIsReady = true
 
 
 func _on_cosmetic_timer_timeout():
 	_bite.deactivate()
 
 func _on_tail_cooldow_timer_timeout():
-	isReady = true
+	tailIsReady = true
 
 func _on_tail_cosmetic_timer_timeout():
 	_tailWhip.deactivate()
@@ -178,6 +188,18 @@ func _on_slow_timer_timeout():
 	_playerVelocity = GlobalVars.playerVelocity
 	$MainCharacterAnimation.speed_scale = 1
 
+func dash():
+	if dashIsReady:
+		print("dashing")
+		_playerVelocity = 1000
+		_dashDurationTimer.start()
+		_dashCoolDownTimer.start()
+		dashIsReady = false
+
+func _on_dash_cooldown_timer_timeout():
+	print("Dash cooldown finished")
+	dashIsReady = true
 
 
-
+func _on_dash_duration_timeout():
+	_playerVelocity = GlobalVars.playerVelocity
