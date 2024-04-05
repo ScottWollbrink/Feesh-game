@@ -11,6 +11,8 @@ var playerXpToLevel = 100
 
 var biteDamage = 50
 var biteArmorPen = 0.4
+var tailWhipDamage = 35
+var tailWhipArmorPen = 0.6
 
 var turtleVelocity = 100
 var turtleHealth = 150
@@ -25,6 +27,13 @@ var jellyDefense = 0.0
 var jellyLerp = 1
 var jellyDamage = 1
 var jellyXp = 5
+
+var eelVelocity = 275
+var eelHealth = 100
+var eelDefense = 0.0
+var eelLerp = 1
+var eelDamage = 5
+var eelXp = 15
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

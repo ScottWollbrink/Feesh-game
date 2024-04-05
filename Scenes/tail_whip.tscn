@@ -1,0 +1,81 @@
+[gd_scene load_steps=14 format=3 uid="uid://ly5uh1u548cx"]
+
+[ext_resource type="Script" path="res://TailWhip.gd" id="1_5d41j"]
+[ext_resource type="Script" path="res://TailWhipHitBox.gd" id="2_jft6o"]
+[ext_resource type="Texture2D" uid="uid://dlbvwm5o548wf" path="res://VFX/PNG/10/1.png" id="2_qefr4"]
+[ext_resource type="Texture2D" uid="uid://bbpg2d5gpjwor" path="res://VFX/PNG/10/2.png" id="3_eoft2"]
+[ext_resource type="Texture2D" uid="uid://bm58tpfw5uwyj" path="res://VFX/PNG/10/3.png" id="4_gmsj4"]
+[ext_resource type="Texture2D" uid="uid://cfc076s6smvym" path="res://VFX/PNG/10/4.png" id="5_bdc20"]
+[ext_resource type="Texture2D" uid="uid://bxwslqfq4ith4" path="res://VFX/PNG/10/5.png" id="6_rq8ig"]
+[ext_resource type="Texture2D" uid="uid://b7t38upc5g4h7" path="res://VFX/PNG/10/6.png" id="7_hemyh"]
+[ext_resource type="Texture2D" uid="uid://nxpourq5rw3d" path="res://VFX/PNG/10/7.png" id="8_u5cbb"]
+[ext_resource type="Texture2D" uid="uid://cl80cjxejui15" path="res://VFX/PNG/10/8.png" id="9_o2gge"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6e1q7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qefr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eoft2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gmsj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bdc20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rq8ig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hemyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u5cbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_o2gge")
+}],
+"loop": true,
+"name": &"tailwhip",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igmr1"]
+size = Vector2(26, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ef55a"]
+size = Vector2(52, 32)
+
+[node name="TailWhip" type="CharacterBody2D"]
+script = ExtResource("1_5d41j")
+
+[node name="TailWhipAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.43674, 2.70711)
+rotation = 3.14159
+scale = Vector2(0.0828937, 0.0898043)
+sprite_frames = SubResource("SpriteFrames_6e1q7")
+animation = &"tailwhip"
+frame = 7
+frame_progress = 0.240459
+speed_scale = 1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+light_mask = 0
+visibility_layer = 0
+shape = SubResource("RectangleShape2D_igmr1")
+
+[node name="TailWhipHitBox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+monitoring = false
+script = ExtResource("2_jft6o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailWhipHitBox"]
+light_mask = 32
+visibility_layer = 4
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_ef55a")

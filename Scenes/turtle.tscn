@@ -7,16 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://cw8p3d8sxsfv6" path="res://EnemySprites/2/Walk.png" id="6_8meqf"]
 [ext_resource type="Script" path="res://Scripts/Enemy/TurtleHitBox.gd" id="7_ooe4b"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ngl8"]
-radius = 5.0
-height = 34.0
-
 [sub_resource type="Animation" id="Animation_i3awb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Turtle:texture")
+tracks/0/path = NodePath("TurtleSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Turtle:hframes")
+tracks/1/path = NodePath("TurtleSprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -40,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Turtle:vframes")
+tracks/2/path = NodePath("TurtleSprite:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -52,7 +48,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Turtle:frame")
+tracks/3/path = NodePath("TurtleSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -68,7 +64,7 @@ length = 0.54
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Turtle:texture")
+tracks/0/path = NodePath("TurtleSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -80,7 +76,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Turtle:hframes")
+tracks/1/path = NodePath("TurtleSprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -92,7 +88,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Turtle:vframes")
+tracks/2/path = NodePath("TurtleSprite:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -104,7 +100,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Turtle:frame")
+tracks/3/path = NodePath("TurtleSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -121,7 +117,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Turtle:texture")
+tracks/0/path = NodePath("TurtleSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -133,7 +129,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Turtle:hframes")
+tracks/1/path = NodePath("TurtleSprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -145,7 +141,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Turtle:vframes")
+tracks/2/path = NodePath("TurtleSprite:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -157,7 +153,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Turtle:frame")
+tracks/3/path = NodePath("TurtleSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -174,7 +170,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Turtle:texture")
+tracks/0/path = NodePath("TurtleSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -186,7 +182,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Turtle:hframes")
+tracks/1/path = NodePath("TurtleSprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -198,7 +194,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Turtle:vframes")
+tracks/2/path = NodePath("TurtleSprite:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -210,7 +206,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Turtle:frame")
+tracks/3/path = NodePath("TurtleSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -227,6 +223,10 @@ _data = {
 "hurt": SubResource("Animation_g0li7"),
 "swimming": SubResource("Animation_7ug4b")
 }
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ngl8"]
+radius = 5.0
+height = 34.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ia43v"]
 radius = 11.8125
@@ -253,19 +253,11 @@ corner_radius_bottom_left = 8
 [node name="Turtle" type="CharacterBody2D"]
 script = ExtResource("1_oqkum")
 
-[node name="Turtle" type="Sprite2D" parent="."]
+[node name="TurtleSprite" type="Sprite2D" parent="."]
 position = Vector2(4.76837e-07, 0)
 scale = Vector2(1.61108, 1.29687)
 texture = ExtResource("6_8meqf")
 hframes = 6
-
-[node name="SoftCollision" parent="." instance=ExtResource("6_5fril")]
-collision_layer = 1
-collision_mask = 1
-
-[node name="CollisionShape2D" parent="SoftCollision" index="0"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_8ngl8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -273,6 +265,12 @@ libraries = {
 }
 autoplay = "swimming"
 speed_scale = 0.495
+
+[node name="SoftCollision" parent="." instance=ExtResource("6_5fril")]
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_8ngl8")
 
 [node name="TurtleHurtBox" type="Area2D" parent="."]
 collision_layer = 4

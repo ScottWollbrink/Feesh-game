@@ -45,9 +45,9 @@ func _physics_process(delta):
 	var isRight = velocity.x > 0
 	
 	if isRight:
-		$Jellyfish.flip_h = false
+		$JellyfishSprite.flip_h = false
 	elif isLeft:
-		$Jellyfish.flip_h = true
+		$JellyfishSprite.flip_h = true
 		
 	if _softCollisions.is_colliding():
 		velocity += _softCollisions.get_push_vector() * delta * 400

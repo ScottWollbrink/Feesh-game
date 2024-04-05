@@ -1,9 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://707nifbcq1se"]
+[gd_scene load_steps=21 format=3 uid="uid://707nifbcq1se"]
 
 [ext_resource type="Script" path="res://Scripts/Player/MainCharacter.gd" id="1_r8p80"]
 [ext_resource type="Texture2D" uid="uid://dlvfmnbgjoe8s" path="res://PlayerSprites/Red.png" id="2_sh4ye"]
 [ext_resource type="PackedScene" uid="uid://34xykjf8kqp0" path="res://Scenes/bite.tscn" id="3_t7bg2"]
 [ext_resource type="Script" path="res://Scripts/Player/BiteAttack.gd" id="4_6qbqx"]
+[ext_resource type="PackedScene" uid="uid://ly5uh1u548cx" path="res://Scenes/tail_whip.tscn" id="5_4vxtw"]
+[ext_resource type="Script" path="res://Scenes/tail_whip.gd" id="6_ouaq2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8a3dv"]
 atlas = ExtResource("2_sh4ye")
@@ -144,6 +146,17 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="TailWhipAttack" parent="." instance=ExtResource("5_4vxtw")]
+position = Vector2(-38, -2)
+script = ExtResource("6_ouaq2")
+
+[node name="TailCooldowTimer" type="Timer" parent="TailWhipAttack"]
+one_shot = true
+
+[node name="TailCosmeticTimer" type="Timer" parent="TailWhipAttack"]
+wait_time = 0.5
+one_shot = true
+
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
@@ -188,4 +201,6 @@ one_shot = true
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="BiteAttack/CooldownTimer" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="BiteAttack/CosmeticTimer" to="." method="_on_cosmetic_timer_timeout"]
+[connection signal="timeout" from="TailWhipAttack/TailCooldowTimer" to="." method="_on_tail_cooldow_timer_timeout"]
+[connection signal="timeout" from="TailWhipAttack/TailCosmeticTimer" to="." method="_on_tail_cosmetic_timer_timeout"]
 [connection signal="timeout" from="XpBar/HideXpBarTimer" to="." method="_on_hide_xp_bar_timer_timeout"]

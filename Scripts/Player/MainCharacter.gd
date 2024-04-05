@@ -7,7 +7,9 @@ extends CharacterBody2D
 @onready var _cooldownTimer = $BiteAttack/CooldownTimer
 @onready var _cosmeticTimer = $BiteAttack/CosmeticTimer
 @onready var _bite = $BiteAttack
-@onready var _biteAnimation = $BiteAttack/BiteAnimation
+@onready var _tailWhip = $TailWhipAttack
+@onready var _tailWhipCooldownTimer = $TailWhipAttack/TailCooldowTimer
+@onready var _tailWhipCosmeticTimer = $TailWhipAttack/TailCosmeticTimer
 @onready var _healthBar = $HealthBar
 @onready var _xpBar = $XpBar
 @onready var _playerXp = GlobalVars.playerXp
@@ -53,6 +55,13 @@ func _process(delta):
 		play_goofy_sound(_chompSound, _chompSoundGoofy)
 		_cooldownTimer.start()
 		_cosmeticTimer.start()
+		
+	if Input.is_action_just_pressed("tailwhip") and isReady:
+		isReady = false
+		_tailWhip.activate()
+		play_goofy_sound(_chompSound, _chompSoundGoofy)
+		_tailWhipCooldownTimer.start()
+		_tailWhipCosmeticTimer.start()
 		
 	if (Input.is_action_just_pressed("changesong") and !isDead):
 		if (isInMenu):
@@ -103,7 +112,7 @@ func move_character():
 	if isLeft and !facingLeft:
 		scale.x *= -1
 		facingLeft = true
-		emit_signal("facing_direction_changed", scale.x > 0)
+		#emit_signal("facing_direction_changed", scale.x > 0)
 		isLeft = false
 		_healthBar.scale.x *= -1
 		_healthBar.position.x += 40
@@ -112,7 +121,7 @@ func move_character():
 	elif isRight and facingLeft:
 		scale.x *= -1
 		facingLeft = false
-		emit_signal("facing_direction_changed", scale.x > 0)
+		#emit_signal("facing_direction_changed", scale.x > 0)
 		isRight = false
 		_healthBar.scale.x *= -1
 		_healthBar.position.x -= 40
@@ -154,7 +163,12 @@ func _on_cooldown_timeout():
 func _on_cosmetic_timer_timeout():
 	_bite.deactivate()
 
+func _on_tail_cooldow_timer_timeout():
+	isReady = true
 
+func _on_tail_cosmetic_timer_timeout():
+	_tailWhip.deactivate()
+	
 func _on_hide_xp_bar_timer_timeout():
 	_hideXpBarTimer.stop()
 	_xpBar.visible = false
@@ -163,3 +177,7 @@ func _on_hide_xp_bar_timer_timeout():
 func _on_slow_timer_timeout():
 	_playerVelocity = GlobalVars.playerVelocity
 	$MainCharacterAnimation.speed_scale = 1
+
+
+
+

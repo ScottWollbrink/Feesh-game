@@ -1,0 +1,275 @@
+[gd_scene load_steps=15 format=3 uid="uid://c6nayw8xnn42q"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/Eel.gd" id="1_cbl6x"]
+[ext_resource type="Texture2D" uid="uid://0x0a3f447ktg" path="res://EnemySprites/5/Walk.png" id="2_hdsgf"]
+[ext_resource type="Texture2D" uid="uid://6yfvuuu2vuhh" path="res://EnemySprites/5/Hurt.png" id="3_50scb"]
+[ext_resource type="PackedScene" uid="uid://crglj4k7iooai" path="res://soft_collision.tscn" id="5_v0n05"]
+[ext_resource type="Script" path="res://Scenes/EelHitBox.gd" id="6_hyte5"]
+
+[sub_resource type="Animation" id="Animation_hpyii"]
+resource_name = "swimming"
+length = 0.57
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EelSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_hdsgf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EelSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EelSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EelSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_mrf1e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EelSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_hdsgf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EelSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EelSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EelSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qnpjn"]
+resource_name = "hurt"
+length = 0.21
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EelSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_50scb")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EelSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EelSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EelSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_won5x"]
+_data = {
+"RESET": SubResource("Animation_mrf1e"),
+"hurt": SubResource("Animation_qnpjn"),
+"swimming": SubResource("Animation_hpyii")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ngl8"]
+radius = 5.0
+height = 34.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ia43v"]
+radius = 11.8125
+height = 84.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s61vf"]
+radius = 12.0
+height = 88.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1sfbh"]
+bg_color = Color(0.152941, 0.168627, 0.188235, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xjp7"]
+bg_color = Color(0.8, 0.388235, 0.372549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Eel" type="CharacterBody2D"]
+script = ExtResource("1_cbl6x")
+
+[node name="EelSprite" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(1.61108, 1.29687)
+texture = ExtResource("2_hdsgf")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_won5x")
+}
+autoplay = "swimming"
+
+[node name="SoftCollision" parent="." instance=ExtResource("5_v0n05")]
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_8ngl8")
+
+[node name="EelHurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 160
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EelHurtBox"]
+light_mask = 4
+visibility_layer = 2
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_ia43v")
+
+[node name="EelHitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+monitoring = false
+script = ExtResource("6_hyte5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EelHitBox"]
+light_mask = 32
+visibility_layer = 4
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_s61vf")
+
+[node name="HitBoxTimer" type="Timer" parent="EelHitBox"]
+wait_time = 0.5
+one_shot = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+theme_override_styles/background = SubResource("StyleBoxFlat_1sfbh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0xjp7")
+max_value = 200.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="HideHealthBarTimer" type="Timer" parent="HealthBar"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="area_entered" from="EelHurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="timeout" from="EelHitBox/HitBoxTimer" to="EelHitBox" method="_on_hit_box_timer_timeout"]
+[connection signal="timeout" from="HealthBar/HideHealthBarTimer" to="." method="_on_hide_health_bar_timer_timeout"]
+
+[editable path="SoftCollision"]

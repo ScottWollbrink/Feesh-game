@@ -45,9 +45,9 @@ func _physics_process(delta):
 	var isRight = velocity.x > 0
 	
 	if isRight:
-		$Turtle.flip_h = false
+		$TurtleSprite.flip_h = false
 	elif isLeft:
-		$Turtle.flip_h = true
+		$TurtleSprite.flip_h = true
 		
 	if _softCollisions.is_colliding():
 		velocity += _softCollisions.get_push_vector() * delta * 400

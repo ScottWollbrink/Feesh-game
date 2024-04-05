@@ -41,7 +41,7 @@ offset_bottom = 2067.0
 texture = ExtResource("1_tvujx")
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_4r054")]
-position = Vector2(1848, 1055)
+position = Vector2(785, 455)
 
 [node name="Path2D" type="Path2D" parent="MainCharacter"]
 curve = SubResource("Curve2D_vlemf")
