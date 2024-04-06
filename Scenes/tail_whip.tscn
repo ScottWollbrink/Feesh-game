@@ -1,7 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://ly5uh1u548cx"]
 
-[ext_resource type="Script" path="res://TailWhip.gd" id="1_5d41j"]
-[ext_resource type="Script" path="res://TailWhipHitBox.gd" id="2_jft6o"]
+[ext_resource type="Script" path="res://Scripts/Player/TailWhip.gd" id="1_30epb"]
 [ext_resource type="Texture2D" uid="uid://dlbvwm5o548wf" path="res://VFX/PNG/10/1.png" id="2_qefr4"]
 [ext_resource type="Texture2D" uid="uid://bbpg2d5gpjwor" path="res://VFX/PNG/10/2.png" id="3_eoft2"]
 [ext_resource type="Texture2D" uid="uid://bm58tpfw5uwyj" path="res://VFX/PNG/10/3.png" id="4_gmsj4"]
@@ -10,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b7t38upc5g4h7" path="res://VFX/PNG/10/6.png" id="7_hemyh"]
 [ext_resource type="Texture2D" uid="uid://nxpourq5rw3d" path="res://VFX/PNG/10/7.png" id="8_u5cbb"]
 [ext_resource type="Texture2D" uid="uid://cl80cjxejui15" path="res://VFX/PNG/10/8.png" id="9_o2gge"]
+[ext_resource type="Script" path="res://Scripts/Player/TailWhipHitBox.gd" id="10_ky6o2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6e1q7"]
 animations = [{
@@ -50,7 +50,7 @@ size = Vector2(26, 16)
 size = Vector2(52, 32)
 
 [node name="TailWhip" type="CharacterBody2D"]
-script = ExtResource("1_5d41j")
+script = ExtResource("1_30epb")
 
 [node name="TailWhipAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(3.43674, 2.70711)
@@ -72,7 +72,7 @@ shape = SubResource("RectangleShape2D_igmr1")
 collision_layer = 32
 collision_mask = 4
 monitoring = false
-script = ExtResource("2_jft6o")
+script = ExtResource("10_ky6o2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TailWhipHitBox"]
 light_mask = 32

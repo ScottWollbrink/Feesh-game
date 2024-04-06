@@ -8,10 +8,11 @@ extends CharacterBody2D
 @onready var _cosmeticTimer = $BiteAttack/CosmeticTimer
 @onready var _bite = $BiteAttack
 @onready var _tailWhip = $TailWhipAttack
+@onready var _dash = $DashAttack
 @onready var _tailWhipCooldownTimer = $TailWhipAttack/TailCooldowTimer
 @onready var _tailWhipCosmeticTimer = $TailWhipAttack/TailCosmeticTimer
-@onready var _dashDurationTimer = $dashDuration
-@onready var _dashCoolDownTimer = $dashCooldownTimer
+@onready var _dashDurationTimer = $DashAttack/dashDuration
+@onready var _dashCoolDownTimer = $DashAttack/dashCooldownTimer
 @onready var _healthBar = $HealthBar
 @onready var _xpBar = $XpBar
 @onready var _playerXp = GlobalVars.playerXp
@@ -196,8 +197,10 @@ func dash():
 		print("dashing")
 		play_goofy_sound(_mcDashSound, _mcDashSoundGoofy)
 		_playerVelocity = 1000
+		$PlayerHurtBox/CollisionShape2D.disabled = true
 		_dashDurationTimer.start()
 		_dashCoolDownTimer.start()
+		_dash.activate()
 		dashIsReady = false
 
 func _on_dash_cooldown_timer_timeout():
@@ -207,3 +210,6 @@ func _on_dash_cooldown_timer_timeout():
 
 func _on_dash_duration_timeout():
 	_playerVelocity = GlobalVars.playerVelocity
+	$PlayerHurtBox/CollisionShape2D.disabled = false
+	_dash.deactivate()
+	print(_playerDefense)

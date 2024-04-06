@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dljag02njjjuc"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Dash.gd" id="1_6vbma"]
+[ext_resource type="Script" path="res://Scripts/Player/DashHitBox.gd" id="2_q7i25"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igmr1"]
+size = Vector2(26, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n0ls3"]
+radius = 14.0
+height = 52.0
+
+[node name="Dash" type="CharacterBody2D"]
+script = ExtResource("1_6vbma")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+light_mask = 0
+visibility_layer = 0
+shape = SubResource("RectangleShape2D_igmr1")
+
+[node name="DashHitBox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+monitoring = false
+script = ExtResource("2_q7i25")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashHitBox"]
+light_mask = 32
+visibility_layer = 4
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_n0ls3")

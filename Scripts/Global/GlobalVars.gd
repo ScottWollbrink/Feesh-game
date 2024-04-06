@@ -13,6 +13,8 @@ var biteDamage = 50
 var biteArmorPen = 0.4
 var tailWhipDamage = 35
 var tailWhipArmorPen = 0.6
+var dashDamage = 25
+var dashArmorPen = 0.8
 
 var turtleVelocity = 100
 var turtleHealth = 150

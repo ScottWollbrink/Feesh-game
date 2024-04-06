@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemy/Jelly.gd" id="1_i0x7n"]
 [ext_resource type="Texture2D" uid="uid://cxxrt3lsf5gag" path="res://EnemySprites/1/Walk.png" id="2_1pb5n"]
 [ext_resource type="Texture2D" uid="uid://cm5tsat3c407g" path="res://EnemySprites/1/Hurt.png" id="3_2j46g"]
-[ext_resource type="PackedScene" uid="uid://crglj4k7iooai" path="res://soft_collision.tscn" id="4_rknvp"]
+[ext_resource type="PackedScene" uid="uid://crglj4k7iooai" path="res://Scenes/soft_collision.tscn" id="4_o8bkw"]
 [ext_resource type="Script" path="res://Scenes/JellyHitBox.gd" id="4_ws4rs"]
 
 [sub_resource type="Animation" id="Animation_2afxd"]
@@ -211,7 +211,7 @@ libraries = {
 autoplay = "swimming"
 speed_scale = 0.494
 
-[node name="SoftCollision" parent="." instance=ExtResource("4_rknvp")]
+[node name="SoftCollision" parent="." instance=ExtResource("4_o8bkw")]
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
 shape = SubResource("CircleShape2D_tjoak")

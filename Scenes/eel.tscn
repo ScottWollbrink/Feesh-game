@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemy/Eel.gd" id="1_cbl6x"]
 [ext_resource type="Texture2D" uid="uid://0x0a3f447ktg" path="res://EnemySprites/5/Walk.png" id="2_hdsgf"]
 [ext_resource type="Texture2D" uid="uid://6yfvuuu2vuhh" path="res://EnemySprites/5/Hurt.png" id="3_50scb"]
-[ext_resource type="PackedScene" uid="uid://crglj4k7iooai" path="res://soft_collision.tscn" id="5_v0n05"]
+[ext_resource type="PackedScene" uid="uid://crglj4k7iooai" path="res://Scenes/soft_collision.tscn" id="4_5r2p2"]
 [ext_resource type="Script" path="res://Scenes/EelHitBox.gd" id="6_hyte5"]
 
 [sub_resource type="Animation" id="Animation_mrf1e"]
@@ -210,7 +210,7 @@ libraries = {
 }
 autoplay = "swimming"
 
-[node name="SoftCollision" parent="." instance=ExtResource("5_v0n05")]
+[node name="SoftCollision" parent="." instance=ExtResource("4_5r2p2")]
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
 rotation = 1.5708

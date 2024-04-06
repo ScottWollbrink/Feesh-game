@@ -1,11 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://707nifbcq1se"]
+[gd_scene load_steps=23 format=3 uid="uid://707nifbcq1se"]
 
 [ext_resource type="Script" path="res://Scripts/Player/MainCharacter.gd" id="1_r8p80"]
 [ext_resource type="Texture2D" uid="uid://dlvfmnbgjoe8s" path="res://PlayerSprites/Red.png" id="2_sh4ye"]
 [ext_resource type="PackedScene" uid="uid://34xykjf8kqp0" path="res://Scenes/bite.tscn" id="3_t7bg2"]
 [ext_resource type="Script" path="res://Scripts/Player/BiteAttack.gd" id="4_6qbqx"]
 [ext_resource type="PackedScene" uid="uid://ly5uh1u548cx" path="res://Scenes/tail_whip.tscn" id="5_4vxtw"]
-[ext_resource type="Script" path="res://Scenes/tail_whip.gd" id="6_ouaq2"]
+[ext_resource type="Script" path="res://Scripts/Player/tail_whip.gd" id="6_ouaq2"]
+[ext_resource type="PackedScene" uid="uid://dljag02njjjuc" path="res://dash.tscn" id="7_0q27w"]
+[ext_resource type="Script" path="res://dash.gd" id="8_pye0p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8a3dv"]
 atlas = ExtResource("2_sh4ye")
@@ -120,14 +122,6 @@ debug_color = Color(0.756863, 0.45098, 0.0862745, 0.419608)
 [node name="SlowTimer" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="dashDuration" type="Timer" parent="."]
-wait_time = 0.25
-one_shot = true
-
-[node name="dashCooldownTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
 [node name="PlayerHurtBox" type="Area2D" parent="."]
 scale = Vector2(1.96875, 1.875)
 collision_layer = 2
@@ -148,6 +142,7 @@ collision_mask = 4
 script = ExtResource("4_6qbqx")
 
 [node name="CooldownTimer" type="Timer" parent="BiteAttack"]
+wait_time = 4.0
 one_shot = true
 
 [node name="CosmeticTimer" type="Timer" parent="BiteAttack"]
@@ -163,6 +158,17 @@ one_shot = true
 
 [node name="TailCosmeticTimer" type="Timer" parent="TailWhipAttack"]
 wait_time = 0.5
+one_shot = true
+
+[node name="DashAttack" parent="." instance=ExtResource("7_0q27w")]
+script = ExtResource("8_pye0p")
+
+[node name="dashDuration" type="Timer" parent="DashAttack"]
+wait_time = 0.25
+one_shot = true
+
+[node name="dashCooldownTimer" type="Timer" parent="DashAttack"]
+wait_time = 2.0
 one_shot = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -206,11 +212,11 @@ wait_time = 3.0
 one_shot = true
 
 [connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]
-[connection signal="timeout" from="dashDuration" to="." method="_on_dash_duration_timeout"]
-[connection signal="timeout" from="dashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="BiteAttack/CooldownTimer" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="BiteAttack/CosmeticTimer" to="." method="_on_cosmetic_timer_timeout"]
 [connection signal="timeout" from="TailWhipAttack/TailCooldowTimer" to="." method="_on_tail_cooldow_timer_timeout"]
 [connection signal="timeout" from="TailWhipAttack/TailCosmeticTimer" to="." method="_on_tail_cosmetic_timer_timeout"]
+[connection signal="timeout" from="DashAttack/dashDuration" to="." method="_on_dash_duration_timeout"]
+[connection signal="timeout" from="DashAttack/dashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="XpBar/HideXpBarTimer" to="." method="_on_hide_xp_bar_timer_timeout"]
