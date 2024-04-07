@@ -26,29 +26,41 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -554.5
-offset_top = -303.0
-offset_right = 40.5
-offset_bottom = 20.0
+offset_left = -297.5
+offset_top = -161.5
+offset_right = 297.5
+offset_bottom = 161.5
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.768627)
+color = Color(0, 0, 0, 0.729412)
 
 [node name="PausedLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 237.0
-offset_top = 117.0
-offset_right = 404.0
-offset_bottom = 141.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.037
+offset_left = -81.5
+offset_top = 241.0
+offset_right = 85.5
+offset_bottom = 240.876
+grow_horizontal = 2
 text = "- paused -"
 horizontal_alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 257.0
-offset_top = 153.0
-offset_right = 385.0
-offset_bottom = 227.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.5
+offset_top = -47.5
+offset_right = 70.5
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ResumeButton" type="Button" parent="Buttons"]
 layout_mode = 2
@@ -56,13 +68,6 @@ theme_override_styles/normal = ExtResource("2_sf1al")
 theme_override_styles/hover = ExtResource("3_203y2")
 theme_override_styles/pressed = ExtResource("4_cw72h")
 text = "RESUME"
-
-[node name="SettingsButton" type="Button" parent="Buttons"]
-layout_mode = 2
-theme_override_styles/normal = ExtResource("2_sf1al")
-theme_override_styles/hover = ExtResource("3_203y2")
-theme_override_styles/pressed = ExtResource("4_cw72h")
-text = "SETTINGS"
 
 [node name="QuitButton" type="Button" parent="Buttons"]
 layout_mode = 2
@@ -72,5 +77,4 @@ theme_override_styles/pressed = ExtResource("4_cw72h")
 text = "QUIT"
 
 [connection signal="pressed" from="Buttons/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,29 +1,17 @@
-# This script is used to play SFX or Soundtrack.
-# Using this enables uninterrupted sounds while changing scenes.
+extends Node
 
-extends AudioStreamPlayer
-
-var startup_sound
-var ost
-var test_sound = load("res://Resources/Audio/test_sfx.wav")
-
-func _ready():
-	# The AudioManager is not affected by pausing the game. Change when needed.
-	process_mode = Node.PROCESS_MODE_ALWAYS
-
-
-func play_test_sfx(bus_name:String):
-	self.bus = bus_name
-	self.stream = test_sound
-	self.play()
-
-func play_startup_sfx():
-	self.bus = "SoundEffects"
-	self.stream = startup_sound
-	self.play()
-
-func play_ost():
-	self.bus = "Music"
-	self.stream = startup_sound
-	self.play()
-
+@onready var biteSfxGoofy = $BiteSFXGoofy
+@onready var musicPlayer = $MusicPlayer
+@onready var musicPlayerMenu = $MusicPlayerMenu
+@onready var musicPlayerDeath = $MusicPlayerDeath
+@onready var stingSfx = $StingSFX
+@onready var stingSfxGoofy = $StingSFXGoofy
+@onready var slapSfx = $SlapSFX
+@onready var mainCharacterSlapSfx = $MainCharacterSlapSFX
+@onready var mainCharacterSlapSfxGoofy = $MainCharacterSlapSFXGoofy
+@onready var mainCharacterDashSfx = $MainCharacterDashSFX
+@onready var mainCharacterDashSfxGoofy = $MainCharacterDashSFXGoofy
+@onready var turtleSfx = $TurtleSFX
+@onready var deathSfx = $DeathSFX
+@onready var deathSfxGoofy = $DeathSFXGoofy
+@onready var biteSfx = $BiteSFX

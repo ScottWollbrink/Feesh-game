@@ -1,24 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://d3v1gd3x11yss"]
+[gd_scene load_steps=12 format=3 uid="uid://d3v1gd3x11yss"]
 
 [ext_resource type="PackedScene" uid="uid://707nifbcq1se" path="res://Scenes/main_character.tscn" id="1_4r054"]
 [ext_resource type="Script" path="res://FEESH.gd" id="1_7nc4i"]
 [ext_resource type="Texture2D" uid="uid://54eow8uh1lqb" path="res://BackgroundAssets/Underwater Pack/Afternoon/Underwater_Afternoon_10.jpg" id="1_tvujx"]
-[ext_resource type="AudioStream" uid="uid://bs1ivmg1cvgas" path="res://Audio/BGMusic.wav" id="4_8mywm"]
-[ext_resource type="AudioStream" uid="uid://cs2pm2ts0rm0s" path="res://Audio/ChompSound.wav" id="4_s7lhl"]
-[ext_resource type="AudioStream" uid="uid://b0rfiyh377n7l" path="res://Audio/MainCharacterChompWord.wav" id="5_8xg50"]
-[ext_resource type="AudioStream" uid="uid://d4kr3xa7kw1xq" path="res://Audio/DeathSound.wav" id="5_egoto"]
-[ext_resource type="AudioStream" uid="uid://yxlrfukakjnm" path="res://Audio/SmallChompRemix.wav" id="5_p702j"]
-[ext_resource type="AudioStream" uid="uid://bijqq8cllai7e" path="res://Audio/ImDead.wav" id="6_k7bcn"]
-[ext_resource type="AudioStream" uid="uid://seb0yunvegsx" path="res://Audio/BGMusicDeath.wav" id="7_i0ojp"]
-[ext_resource type="AudioStream" uid="uid://c8k6ba112klua" path="res://Audio/BGMusicMenu.wav" id="10_o1hdg"]
+[ext_resource type="PackedScene" uid="uid://dnc6gtuwi4ulj" path="res://Menus/PauseMenu/pause_menu.tscn" id="5_keytt"]
+[ext_resource type="PackedScene" uid="uid://m6fhq53jkal" path="res://hud.tscn" id="6_3astr"]
 [ext_resource type="Texture2D" uid="uid://bwthhwe2xakj3" path="res://BackgroundAssets/boarder.png" id="12_x6ak8"]
-[ext_resource type="AudioStream" uid="uid://cvepxah1kkkyc" path="res://Audio/StingSound.wav" id="13_21huk"]
-[ext_resource type="AudioStream" uid="uid://b2aee6fv6mp03" path="res://Audio/StingWord.wav" id="14_5m6c8"]
-[ext_resource type="AudioStream" uid="uid://pmy82sfm3j87" path="res://Audio/SlapSound.wav" id="15_qwoeq"]
-[ext_resource type="AudioStream" uid="uid://txpdlfmnyxd6" path="res://Audio/MainCharacterSlapSound.wav" id="16_tqhvr"]
-[ext_resource type="AudioStream" uid="uid://dforh04glw2dn" path="res://Audio/MainCharacterSlapWord.wav" id="17_vcwbr"]
-[ext_resource type="AudioStream" uid="uid://b1v74objm4nbq" path="res://Audio/MainCharacterDashSound.wav" id="18_3ptrx"]
-[ext_resource type="AudioStream" uid="uid://djpcsq55t8tfu" path="res://Audio/MainCharacterDashWord.wav" id="19_vawys"]
 
 [sub_resource type="Curve2D" id="Curve2D_vlemf"]
 _data = {
@@ -49,9 +36,12 @@ offset_bottom = 2067.0
 texture = ExtResource("1_tvujx")
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_4r054")]
-position = Vector2(785, 455)
+unique_name_in_owner = true
+position = Vector2(1482, 833)
 
 [node name="Path2D" type="Path2D" parent="MainCharacter"]
+position = Vector2(-10.6362, 3.23882)
+scale = Vector2(1.09076, 1.13764)
 curve = SubResource("Curve2D_vlemf")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="MainCharacter/Path2D"]
@@ -70,91 +60,38 @@ texture = ExtResource("12_x6ak8")
 [node name="ColorRect2" type="ColorRect" parent="."]
 top_level = true
 offset_left = 145.0
-offset_top = -8.0
+offset_top = -498.0
 offset_right = 3375.0
 offset_bottom = 279.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 top_level = true
+offset_left = -823.0
+offset_top = -492.0
 offset_right = 544.0
 offset_bottom = 2069.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 top_level = true
-offset_left = 3369.0
-offset_top = -1.0
-offset_right = 3875.0
+offset_left = 3363.0
+offset_top = -496.0
+offset_right = 4496.0
 offset_bottom = 1817.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="."]
 top_level = true
-offset_left = 533.0
+offset_left = -713.0
 offset_top = 1785.0
-offset_right = 3875.0
-offset_bottom = 2067.0
+offset_right = 4489.0
+offset_bottom = 2531.0
 color = Color(0, 0, 0, 1)
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 3.0
 autostart = true
-
-[node name="AudioManager" type="Node" parent="."]
-
-[node name="BiteSFX" type="AudioStreamPlayer2D" parent="AudioManager"]
-stream = ExtResource("4_s7lhl")
-
-[node name="TurtleSFX" type="AudioStreamPlayer2D" parent="AudioManager"]
-stream = ExtResource("5_p702j")
-
-[node name="DeathSFX" type="AudioStreamPlayer2D" parent="AudioManager"]
-stream = ExtResource("5_egoto")
-
-[node name="DeathSFXGoofy" type="AudioStreamPlayer2D" parent="AudioManager"]
-stream = ExtResource("6_k7bcn")
-
-[node name="BiteSFXGoofy" type="AudioStreamPlayer2D" parent="AudioManager"]
-stream = ExtResource("5_8xg50")
-
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]
-stream = ExtResource("4_8mywm")
-
-[node name="MusicPlayerMenu" type="AudioStreamPlayer2D" parent="AudioManager"]
-stream = ExtResource("10_o1hdg")
-
-[node name="MusicPlayerDeath" type="AudioStreamPlayer2D" parent="AudioManager"]
-position = Vector2(0, -1)
-stream = ExtResource("7_i0ojp")
-
-[node name="StingSFX" type="AudioStreamPlayer2D" parent="AudioManager"]
-position = Vector2(0, -2)
-stream = ExtResource("13_21huk")
-
-[node name="StingSFXGoofy" type="AudioStreamPlayer2D" parent="AudioManager"]
-position = Vector2(0, -2)
-stream = ExtResource("14_5m6c8")
-
-[node name="SlapSFX" type="AudioStreamPlayer2D" parent="AudioManager"]
-position = Vector2(0, -2)
-stream = ExtResource("15_qwoeq")
-
-[node name="MainCharacterSlapSFX" type="AudioStreamPlayer2D" parent="AudioManager"]
-position = Vector2(0, -2)
-stream = ExtResource("16_tqhvr")
-
-[node name="MainCharacterSlapSFXGoofy" type="AudioStreamPlayer2D" parent="AudioManager"]
-position = Vector2(0, -2)
-stream = ExtResource("17_vcwbr")
-
-[node name="MainCharacterDashSFX" type="AudioStreamPlayer2D" parent="AudioManager"]
-position = Vector2(0, -2)
-stream = ExtResource("18_3ptrx")
-
-[node name="MainCharacterDashSFXGoofy" type="AudioStreamPlayer2D" parent="AudioManager"]
-position = Vector2(0, -2)
-stream = ExtResource("19_vawys")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 light_mask = 2
@@ -181,5 +118,15 @@ shape = SubResource("RectangleShape2D_f8dfb")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1757, 1128.69)
 shape = SubResource("RectangleShape2D_o76es")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_keytt")]
+unique_name_in_owner = true
+visible = false
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HUD" parent="." instance=ExtResource("6_3astr")]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]

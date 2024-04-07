@@ -19,8 +19,8 @@ signal instance_instantiated
 const config_path = "user://config.save"
 
 func _ready():
-	self.connect("instance_instantiated", get_node("/root/Game/SettingsManager"), "instance_instantiated")
-	emit_signal("instance_instantiated")
+	pass
+
 func initialize_audio():
 	print(AudioServer.bus_count)
 	while AudioServer.bus_count < 3:

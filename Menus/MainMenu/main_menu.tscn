@@ -1,68 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4nalordjijrh"]
+[gd_scene load_steps=7 format=3 uid="uid://c4nalordjijrh"]
 
 [ext_resource type="Script" path="res://Menus/MainMenu/main_menu.gd" id="1_2ya0w"]
-[ext_resource type="Texture2D" uid="uid://cdwckr7ur4c6c" path="res://Resources/Sprites/icon.svg" id="2_gsih0"]
+[ext_resource type="Texture2D" uid="uid://1yuyk5ink1cv" path="res://BackgroundAssets/feesh.png" id="2_wsajn"]
 [ext_resource type="StyleBox" uid="uid://c2nqiwudvaseb" path="res://Resources/Styles/Standard Button/standard_button_normal_style.tres" id="3_o7gka"]
 [ext_resource type="StyleBox" uid="uid://doq33mqbb3i7r" path="res://Resources/Styles/Standard Button/standard_button_hover_style.tres" id="4_mxkqu"]
 [ext_resource type="StyleBox" uid="uid://dd6kvr76jafiq" path="res://Resources/Styles/Standard Button/standard_button_pressed_style.tres" id="5_virqm"]
+[ext_resource type="PackedScene" uid="uid://n183p1en26jy" path="res://Menus/SettingsMenu/settings_menu_Main_menu.tscn" id="6_k6cxg"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_2ya0w")
 
-[node name="GodotLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 204.0
-offset_top = 25.0
-offset_right = 542.0
-offset_bottom = 113.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 64
-text = "GODOT 4.2"
-vertical_alignment = 1
-
-[node name="Icon" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 108.0
-offset_top = 44.0
-offset_right = 236.0
-offset_bottom = 172.0
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("2_gsih0")
-
-[node name="ProjectTemplateLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 204.0
-offset_top = 92.0
-offset_right = 468.0
-offset_bottom = 137.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 32
-text = "Project Template"
-vertical_alignment = 1
-
-[node name="MadeByLabel" type="Label" parent="."]
-layout_mode = 0
-offset_top = 154.0
-offset_right = 641.0
-offset_bottom = 178.0
-theme_override_colors/font_color = Color(0.129412, 0.145098, 0.196078, 1)
-theme_override_font_sizes/font_size = 12
-text = "made by Ethan"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Feesh" type="Sprite2D" parent="."]
+position = Vector2(573, 323)
+scale = Vector2(1.82381, 1.298)
+texture = ExtResource("2_wsajn")
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 263.0
-offset_top = 207.0
-offset_right = 391.0
-offset_bottom = 318.0
+offset_left = 518.0
+offset_top = 424.0
+offset_right = 646.0
+offset_bottom = 535.0
 pivot_offset = Vector2(64, 0)
 theme_override_constants/separation = 12
 
@@ -101,6 +61,12 @@ theme_override_styles/normal = ExtResource("3_o7gka")
 theme_override_styles/hover = ExtResource("4_mxkqu")
 theme_override_styles/pressed = ExtResource("5_virqm")
 text = "QUIT"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SettingsMenu" parent="CanvasLayer" instance=ExtResource("6_k6cxg")]
+unique_name_in_owner = true
+visible = false
 
 [connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]

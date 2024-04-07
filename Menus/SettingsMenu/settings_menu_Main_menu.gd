@@ -1,9 +1,10 @@
 extends Control
 
-@onready var SettingsManager = $/root/Game/MainCharacter/SettingsMenu/SettingsManager
-@onready var AudioManager = $/root/Game/AudioManager
-@onready var pause_menu = $/root/Game/MainCharacter/PauseMenu
+@onready var SettingsManager = $/root/SettingManager
+@onready var AudioManager = $/root/AudioManager
+@onready var pause_menu = preload("res://Menus/PauseMenu/pause_menu.tscn")
 @onready var pause_menu_instance = null
+@onready var main = $"../../"
 
 
 func _ready():
@@ -13,16 +14,10 @@ func _ready():
 	$EffectsVolumeSlider.value = SettingsManager.effects_volume
 
 func _process(delta):
-	if Input.is_action_just_pressed("pause"):
-		var pause_menu_scene = load("res://Menus/PauseMenu/pause_menu.tscn")
-		pause_menu_instance = pause_menu_scene.instantiate()
-		get_parent().add_child(pause_menu_instance)
-		queue_free()
-	#else:
-		#get_tree().change_scene_to_file("res://Menus/MainMenu/main_menu.tscn")
+	pass
 
 func _on_back_button_pressed():
-	pause_menu.show()
+	main.showSettingsMenu()
 	#SettingsManager.save_config()
 	
 
@@ -55,15 +50,15 @@ func _on_effects_volume_slider_value_changed(value):
 
 
 func _on_master_volume_slider_drag_ended(_value_changed):
-	AudioManager.play_test_sfx("Master")
+	pass
 
 
 func _on_music_volume_slider_drag_ended(_value_changed):
-	AudioManager.play_test_sfx("Music")
+	pass
 
 
 func _on_effects_volume_slider_drag_ended(_value_changed):
-	AudioManager.play_test_sfx("Effects")
+	pass
 
 #
 #func _on_voices_volume_slider_drag_ended(_value_changed):

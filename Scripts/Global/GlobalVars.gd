@@ -37,6 +37,8 @@ var eelLerp = 1
 var eelDamage = 5
 var eelXp = 15
 
+var prevScene = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

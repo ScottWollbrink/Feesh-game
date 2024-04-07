@@ -173,8 +173,8 @@ _data = {
 radius = 7.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xt88c"]
-radius = 11.8125
-height = 32.0
+radius = 22.0
+height = 64.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c1aht"]
 radius = 8.0
@@ -224,7 +224,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JellyHurtBox"]
 light_mask = 4
 visibility_layer = 2
-rotation = 1.5708
+position = Vector2(0, 9)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CapsuleShape2D_xt88c")
 
@@ -253,9 +253,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -20.0
-offset_top = -10.0
+offset_top = -11.0
 offset_right = 20.0
-offset_bottom = -8.0
+offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 10

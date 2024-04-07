@@ -20,17 +20,6 @@ extends CharacterBody2D
 @onready var _playerXpToLevel = GlobalVars.playerXpToLevel
 @onready var _hideXpBarTimer = $XpBar/HideXpBarTimer
 @onready var _goofySoundChance = GlobalVars.goofySoundChance
-@onready var _musicPlayer = get_node("/root/Game/AudioManager/MusicPlayer")
-@onready var _musicPlayerDeath = get_node("/root/Game/AudioManager/MusicPlayerDeath")
-@onready var _musicPlayerMenu = get_node("/root/Game/AudioManager/MusicPlayerMenu")
-@onready var _chompSound = get_node("/root/Game/AudioManager/BiteSFX")
-@onready var _chompSoundGoofy = get_node("/root/Game/AudioManager/BiteSFXGoofy")
-@onready var _deathSound = get_node("/root/Game/AudioManager/DeathSFX")
-@onready var _deathSoundGoofy = get_node("/root/Game/AudioManager/DeathSFXGoofy")
-@onready var _mcDashSound = get_node("/root/Game/AudioManager/MainCharacterDashSFX")
-@onready var _mcDashSoundGoofy = get_node("/root/Game/AudioManager/MainCharacterDashSFXGoofy")
-@onready var _mcSlapSoundGoofy = get_node("/root/Game/AudioManager/MainCharacterSlapSFXGoofy")
-@onready var _mcSlapSound = get_node("/root/Game/AudioManager/MainCharacterSlapSFX")
 
 var isLeft = false
 var isRight = false
@@ -49,40 +38,32 @@ func _ready():
 	_xpBar.set_max(_playerXpToLevel)
 	_xpBar.value = _playerXp
 	_xpBar.visible = false
-	_musicPlayer.play()
+	AudioManager.musicPlayer.play()
 
 func _process(delta):
 	if (_playerHealth <= 0):
 		visible = false # stub
 		if (!isDead):
-			swap_music_track(_musicPlayer, _musicPlayerDeath)
-			play_goofy_sound(_deathSound, _deathSoundGoofy)
+			swap_music_track(AudioManager.musicPlayer, AudioManager.musicPlayerDeath)
+			play_goofy_sound(AudioManager.deathSfx, AudioManager.deathSfxGoofy)
 		isDead = true
 		
 	if Input.is_action_just_pressed("bite") and biteIsReady:
 		biteIsReady = false
 		_bite.activate()
-		play_goofy_sound(_chompSound, _chompSoundGoofy)
+		play_goofy_sound(AudioManager.biteSfx, AudioManager.biteSfxGoofy)
 		_cooldownTimer.start()
 		_cosmeticTimer.start()
 		
 	if Input.is_action_just_pressed("tailwhip") and tailIsReady:
 		tailIsReady = false
 		_tailWhip.activate()
-		play_goofy_sound(_mcSlapSound, _mcSlapSoundGoofy)
+		play_goofy_sound(AudioManager.mainCharacterSlapSfx, AudioManager.mainCharacterSlapSfxGoofy)
 		_tailWhipCooldownTimer.start()
 		_tailWhipCosmeticTimer.start()
-		
-		
-		
-	if (Input.is_action_just_pressed("changesong") and !isDead):
-		if (isInMenu):
-			swap_music_track(_musicPlayerMenu, _musicPlayer)
-			isInMenu = false
-		else:
-			swap_music_track(_musicPlayer, _musicPlayerMenu)
-			isInMenu = true
-		
+
+
+
 func take_damage(dmgValue: float, armorPen: float, hasSlow):
 	dmgValue *= 1 - (_playerDefense * (1 - armorPen))
 	_playerHealth -= dmgValue
@@ -98,6 +79,7 @@ func get_xp(xpValue: float):
 		print("Level up to Level ", _playerLevel)
 		_playerXp += xpValue - _playerXpToLevel
 		_xpBar.max_value = _playerXpToLevel * _playerLevel
+		_playerHealth += 75
 	else:
 		_playerXp += xpValue
 	
@@ -143,7 +125,7 @@ func move_character():
 		_xpBar.position.x -= 30
 	
 	velocity = direction * _playerVelocity
-	_musicPlayer.position = self.position
+	AudioManager.musicPlayer.position = self.position
 
 	move_and_slide()
 	
@@ -156,9 +138,8 @@ func play_goofy_sound(sound, goofySound):
 		sound.play()
 
 func swap_music_track(music, to_music):
-	var musicPlaybackPosition = music.get_playback_position()
 	music.stop()
-	to_music.play(musicPlaybackPosition)
+	to_music.play()
 
 func _on_hurt_box_area_entered(area):
 	if area == null or area.readyToDmg == null or area.readyToDmg == false:
@@ -194,8 +175,7 @@ func _on_slow_timer_timeout():
 
 func dash():
 	if dashIsReady:
-		print("dashing")
-		play_goofy_sound(_mcDashSound, _mcDashSoundGoofy)
+		play_goofy_sound(AudioManager.mainCharacterDashSfx, AudioManager.mainCharacterDashSfxGoofy)
 		_playerVelocity = 1000
 		$PlayerHurtBox/CollisionShape2D.disabled = true
 		_dashDurationTimer.start()
@@ -204,7 +184,6 @@ func dash():
 		dashIsReady = false
 
 func _on_dash_cooldown_timer_timeout():
-	print("Dash cooldown finished")
 	dashIsReady = true
 
 
