@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfvinkgprkg2h"]
+
+[ext_resource type="Script" path="res://GameOverScreen.gd" id="1_rb51j"]
+
+[node name="GameOverScreen" type="ColorRect"]
+process_mode = 3
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 1153.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 0.596078)
+script = ExtResource("1_rb51j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 0.596078)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -369.0
+offset_top = -93.0
+offset_right = 369.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 136
+text = "Game Over"
+
+[node name="Label2" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 449.0
+offset_right = 729.0
+offset_bottom = 484.0
+theme_override_font_sizes/font_size = 25
+text = "Press Space to Restart"

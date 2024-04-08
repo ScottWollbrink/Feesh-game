@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cxxrt3lsf5gag" path="res://EnemySprites/1/Walk.png" id="2_1pb5n"]
 [ext_resource type="Texture2D" uid="uid://cm5tsat3c407g" path="res://EnemySprites/1/Hurt.png" id="3_2j46g"]
 [ext_resource type="PackedScene" uid="uid://crglj4k7iooai" path="res://Scenes/soft_collision.tscn" id="4_o8bkw"]
-[ext_resource type="Script" path="res://Scenes/JellyHitBox.gd" id="4_ws4rs"]
+[ext_resource type="Script" path="res://Scripts/Enemy/JellyHitBox.gd" id="5_lldps"]
 
 [sub_resource type="Animation" id="Animation_2afxd"]
 length = 0.001
@@ -232,7 +232,7 @@ shape = SubResource("CapsuleShape2D_xt88c")
 collision_layer = 4
 collision_mask = 2
 monitoring = false
-script = ExtResource("4_ws4rs")
+script = ExtResource("5_lldps")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JellyHitBox"]
 light_mask = 32

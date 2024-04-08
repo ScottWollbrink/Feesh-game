@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://0x0a3f447ktg" path="res://EnemySprites/5/Walk.png" id="2_hdsgf"]
 [ext_resource type="Texture2D" uid="uid://6yfvuuu2vuhh" path="res://EnemySprites/5/Hurt.png" id="3_50scb"]
 [ext_resource type="PackedScene" uid="uid://crglj4k7iooai" path="res://Scenes/soft_collision.tscn" id="4_5r2p2"]
-[ext_resource type="Script" path="res://Scenes/EelHitBox.gd" id="6_hyte5"]
+[ext_resource type="Script" path="res://Scripts/Enemy/EelHitBox.gd" id="5_j2bge"]
 
 [sub_resource type="Animation" id="Animation_mrf1e"]
 length = 0.001
@@ -233,7 +233,7 @@ shape = SubResource("CapsuleShape2D_ia43v")
 collision_layer = 4
 collision_mask = 2
 monitoring = false
-script = ExtResource("6_hyte5")
+script = ExtResource("5_j2bge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EelHitBox"]
 light_mask = 32

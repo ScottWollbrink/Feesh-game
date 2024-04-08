@@ -11,11 +11,10 @@ func _ready():
 
 func _on_start_button_pressed():
 	AudioManager.musicPlayerMenu.stop()
-	get_tree().change_scene_to_file("res://game.tscn")
+	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 
 func _on_settings_button_pressed():
 	GlobalVars.prevScene = get_tree().get_current_scene()
-	print("current Scene: ", GlobalVars.prevScene)
 	showSettingsMenu()
 	
 func _on_quit_button_pressed():

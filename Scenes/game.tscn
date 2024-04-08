@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3v1gd3x11yss"]
+[gd_scene load_steps=13 format=3 uid="uid://d3v1gd3x11yss"]
 
-[ext_resource type="PackedScene" uid="uid://707nifbcq1se" path="res://Scenes/main_character.tscn" id="1_4r054"]
-[ext_resource type="Script" path="res://FEESH.gd" id="1_7nc4i"]
-[ext_resource type="Texture2D" uid="uid://54eow8uh1lqb" path="res://BackgroundAssets/Underwater Pack/Afternoon/Underwater_Afternoon_10.jpg" id="1_tvujx"]
-[ext_resource type="PackedScene" uid="uid://dnc6gtuwi4ulj" path="res://Menus/PauseMenu/pause_menu.tscn" id="5_keytt"]
-[ext_resource type="PackedScene" uid="uid://m6fhq53jkal" path="res://hud.tscn" id="6_3astr"]
-[ext_resource type="Texture2D" uid="uid://bwthhwe2xakj3" path="res://BackgroundAssets/boarder.png" id="12_x6ak8"]
+[ext_resource type="Script" path="res://FEESH.gd" id="1_kc08y"]
+[ext_resource type="Texture2D" uid="uid://54eow8uh1lqb" path="res://BackgroundAssets/Underwater Pack/Afternoon/Underwater_Afternoon_10.jpg" id="2_bxw44"]
+[ext_resource type="PackedScene" uid="uid://707nifbcq1se" path="res://Scenes/main_character.tscn" id="3_kst42"]
+[ext_resource type="Texture2D" uid="uid://bwthhwe2xakj3" path="res://BackgroundAssets/boarder.png" id="4_wkujq"]
+[ext_resource type="PackedScene" uid="uid://dnc6gtuwi4ulj" path="res://Menus/PauseMenu/pause_menu.tscn" id="5_gv6a1"]
+[ext_resource type="PackedScene" uid="uid://m6fhq53jkal" path="res://Scenes/hud.tscn" id="6_wk5lc"]
+[ext_resource type="PackedScene" uid="uid://dfvinkgprkg2h" path="res://game_over_screen.tscn" id="7_c828l"]
 
 [sub_resource type="Curve2D" id="Curve2D_vlemf"]
 _data = {
@@ -26,16 +27,16 @@ size = Vector2(1488, 22)
 size = Vector2(2800, 19.625)
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_7nc4i")
+script = ExtResource("1_kc08y")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -3.0
 offset_top = -3.0
 offset_right = 3876.0
 offset_bottom = 2067.0
-texture = ExtResource("1_tvujx")
+texture = ExtResource("2_bxw44")
 
-[node name="MainCharacter" parent="." instance=ExtResource("1_4r054")]
+[node name="MainCharacter" parent="." instance=ExtResource("3_kst42")]
 unique_name_in_owner = true
 position = Vector2(1482, 833)
 
@@ -55,7 +56,7 @@ light_mask = 1023
 visibility_layer = 1023
 position = Vector2(1939.5, 1027.5)
 scale = Vector2(1.49115, 1.43426)
-texture = ExtResource("12_x6ak8")
+texture = ExtResource("4_wkujq")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 top_level = true
@@ -121,12 +122,20 @@ shape = SubResource("RectangleShape2D_o76es")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_keytt")]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_gv6a1")]
 unique_name_in_owner = true
 visible = false
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="HUD" parent="." instance=ExtResource("6_3astr")]
+[node name="HUD" parent="." instance=ExtResource("6_wk5lc")]
 
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+
+[node name="GameOverScreen" parent="GameOver" instance=ExtResource("7_c828l")]
+
+[connection signal="health_depleted" from="MainCharacter" to="." method="_on_main_character_health_depleted"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]

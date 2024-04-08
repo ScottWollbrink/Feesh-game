@@ -1,0 +1,75 @@
+[gd_scene load_steps=17 format=3 uid="uid://basfcadj1w8xy"]
+
+[ext_resource type="Script" path="res://Autoloads/AudioManager.gd" id="1_vcmfr"]
+[ext_resource type="AudioStream" uid="uid://b0rfiyh377n7l" path="res://Audio/MainCharacterChompWord.wav" id="2_f528w"]
+[ext_resource type="AudioStream" uid="uid://bs1ivmg1cvgas" path="res://Audio/BGMusic.wav" id="3_0k6qt"]
+[ext_resource type="AudioStream" uid="uid://c8k6ba112klua" path="res://Audio/BGMusicMenu.wav" id="4_jwaop"]
+[ext_resource type="AudioStream" uid="uid://seb0yunvegsx" path="res://Audio/BGMusicDeath.wav" id="5_uapln"]
+[ext_resource type="AudioStream" uid="uid://cvepxah1kkkyc" path="res://Audio/StingSound.wav" id="6_w7r6e"]
+[ext_resource type="AudioStream" uid="uid://b2aee6fv6mp03" path="res://Audio/StingWord.wav" id="7_5707s"]
+[ext_resource type="AudioStream" uid="uid://pmy82sfm3j87" path="res://Audio/SlapSound.wav" id="8_b0yle"]
+[ext_resource type="AudioStream" uid="uid://txpdlfmnyxd6" path="res://Audio/MainCharacterSlapSound.wav" id="9_jfbvb"]
+[ext_resource type="AudioStream" uid="uid://dforh04glw2dn" path="res://Audio/MainCharacterSlapWord.wav" id="10_mvidm"]
+[ext_resource type="AudioStream" uid="uid://b1v74objm4nbq" path="res://Audio/MainCharacterDashSound.wav" id="11_8wq6i"]
+[ext_resource type="AudioStream" uid="uid://djpcsq55t8tfu" path="res://Audio/MainCharacterDashWord.wav" id="12_d8pqd"]
+[ext_resource type="AudioStream" uid="uid://cs2pm2ts0rm0s" path="res://Audio/ChompSound.wav" id="13_i1t11"]
+[ext_resource type="AudioStream" uid="uid://yxlrfukakjnm" path="res://Audio/SmallChompRemix.wav" id="14_bvboy"]
+[ext_resource type="AudioStream" uid="uid://d4kr3xa7kw1xq" path="res://Audio/DeathSound.wav" id="15_6udv2"]
+[ext_resource type="AudioStream" uid="uid://bijqq8cllai7e" path="res://Audio/ImDead.wav" id="16_cb870"]
+
+[node name="AudioManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_vcmfr")
+
+[node name="BiteSFXGoofy" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_f528w")
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0k6qt")
+
+[node name="MusicPlayerMenu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_jwaop")
+
+[node name="MusicPlayerDeath" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -1)
+stream = ExtResource("5_uapln")
+
+[node name="StingSFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -2)
+stream = ExtResource("6_w7r6e")
+
+[node name="StingSFXGoofy" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -2)
+stream = ExtResource("7_5707s")
+
+[node name="SlapSFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -2)
+stream = ExtResource("8_b0yle")
+
+[node name="MainCharacterSlapSFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -2)
+stream = ExtResource("9_jfbvb")
+
+[node name="MainCharacterSlapSFXGoofy" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -2)
+stream = ExtResource("10_mvidm")
+
+[node name="MainCharacterDashSFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -2)
+stream = ExtResource("11_8wq6i")
+
+[node name="MainCharacterDashSFXGoofy" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -2)
+stream = ExtResource("12_d8pqd")
+
+[node name="BiteSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_i1t11")
+
+[node name="TurtleSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_bvboy")
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_6udv2")
+
+[node name="DeathSFXGoofy" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_cb870")

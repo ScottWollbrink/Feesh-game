@@ -22,10 +22,8 @@ func _ready():
 	pass
 
 func initialize_audio():
-	print(AudioServer.bus_count)
 	while AudioServer.bus_count < 3:
 		AudioServer.add_bus()
-	print(AudioServer.bus_count)
 	for i in [[master_bus, master_volume], [music_bus, music_volume], [effects_bus, effects_volume]]:
 		if i[1] == 0:
 			AudioServer.set_bus_mute(i[0], true)

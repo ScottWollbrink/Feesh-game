@@ -21,6 +21,8 @@ extends CharacterBody2D
 @onready var _hideXpBarTimer = $XpBar/HideXpBarTimer
 @onready var _goofySoundChance = GlobalVars.goofySoundChance
 
+signal health_depleted
+
 var isLeft = false
 var isRight = false
 var facingLeft = false
@@ -39,14 +41,16 @@ func _ready():
 	_xpBar.value = _playerXp
 	_xpBar.visible = false
 	AudioManager.musicPlayer.play()
+	AudioManager.musicPlayerDeath.stop()
 
 func _process(delta):
 	if (_playerHealth <= 0):
-		visible = false # stub
+		#visible = false # stub
 		if (!isDead):
 			swap_music_track(AudioManager.musicPlayer, AudioManager.musicPlayerDeath)
 			play_goofy_sound(AudioManager.deathSfx, AudioManager.deathSfxGoofy)
-		isDead = true
+			isDead = true
+			health_depleted.emit()
 		
 	if Input.is_action_just_pressed("bite") and biteIsReady:
 		biteIsReady = false
@@ -74,9 +78,8 @@ func take_damage(dmgValue: float, armorPen: float, hasSlow):
 		$MainCharacterAnimation.speed_scale = 0.5
 	
 func get_xp(xpValue: float):
-	if (_playerXp + xpValue > _playerXpToLevel):
+	if (_playerXp + xpValue >= _playerXpToLevel):
 		_playerLevel += 1
-		print("Level up to Level ", _playerLevel)
 		_playerXp += xpValue - _playerXpToLevel
 		_xpBar.max_value = _playerXpToLevel * _playerLevel
 		_playerHealth += 75
@@ -139,6 +142,7 @@ func play_goofy_sound(sound, goofySound):
 
 func swap_music_track(music, to_music):
 	music.stop()
+	to_music.position = self.position
 	to_music.play()
 
 func _on_hurt_box_area_entered(area):
@@ -191,4 +195,3 @@ func _on_dash_duration_timeout():
 	_playerVelocity = GlobalVars.playerVelocity
 	$PlayerHurtBox/CollisionShape2D.disabled = false
 	_dash.deactivate()
-	print(_playerDefense)

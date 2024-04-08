@@ -13,6 +13,8 @@ func _process(delta):
 		showPauseMenu()
 	
 	$HUD.updateLevel(%MainCharacter._playerLevel)
+
+
 func spawnMob():
 	var randomEnemy = randi_range(0, 2)
 	var spawnedMob = enemyList[randomEnemy].instantiate()
@@ -33,3 +35,10 @@ func showPauseMenu():
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		
 	paused = !paused
+
+
+func _on_main_character_health_depleted():
+	%GameOver.show()
+	get_tree().paused = true
+	print($MainCharacter.isDead)
+

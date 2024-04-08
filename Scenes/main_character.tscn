@@ -6,8 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/Player/BiteAttack.gd" id="4_6qbqx"]
 [ext_resource type="PackedScene" uid="uid://ly5uh1u548cx" path="res://Scenes/tail_whip.tscn" id="5_4vxtw"]
 [ext_resource type="Script" path="res://Scripts/Player/tail_whip.gd" id="6_ouaq2"]
-[ext_resource type="PackedScene" uid="uid://dljag02njjjuc" path="res://dash.tscn" id="7_0q27w"]
-[ext_resource type="Script" path="res://dash.gd" id="8_pye0p"]
+[ext_resource type="PackedScene" uid="uid://dljag02njjjuc" path="res://Scenes/dash.tscn" id="7_3ddyx"]
+[ext_resource type="Script" path="res://DashAttack.gd" id="8_rkej1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8a3dv"]
 atlas = ExtResource("2_sh4ye")
@@ -159,8 +159,8 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[node name="DashAttack" parent="." instance=ExtResource("7_0q27w")]
-script = ExtResource("8_pye0p")
+[node name="DashAttack" parent="." instance=ExtResource("7_3ddyx")]
+script = ExtResource("8_rkej1")
 
 [node name="dashDuration" type="Timer" parent="DashAttack"]
 wait_time = 0.25
